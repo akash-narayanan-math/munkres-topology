@@ -1,0 +1,110 @@
+\documentclass[../../master.tex]{subfiles}
+
+\begin{document}
+\section{Fundamental Concepts}
+
+% Exercise 1.1
+\begin{exercise}
+    Check the distributive laws for $\cup$ and $\cap$ and DeMorgan's laws.
+\end{exercise}
+
+\begin{solution}
+    First, we prove that $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$. 
+    Let $x \in A \cap (B \cup C)$. 
+    Then $x \in A$ and $x \in B$ or $x \in C$.
+    But this implies that $x \in A \cap B$ or $x \in A \cap C$. 
+    Therefore, we have $x \in (A \cap B) \cup (A \cap C)$. 
+    Thus, $A \cap (B \cup C) \subseteq (A \cap B) \cup (A \cap C)$.
+
+    For the opposite direction, let $x \in (A \cap B) \cup (A \cap C)$. 
+    This implies that $x \in A \cap B$ or $x \in A \cap C$. 
+    In either case, $x \in A$. 
+    Furthermore, we have $x \in B$ or $x \in C$. 
+    But then $x \in A \cap (B \cup C)$ so $(A \cap B) \cup (A \cap C) \subseteq A \cap (B \cup C)$, proving the equality.
+    The proof for the second statement is entirely analogous.
+
+    Now we will prove the first of DeMorgan's laws, that $A - (B \cup C) = (A - B) \cap (A - C)$.
+    Let $x \in A - (B \cup C)$. 
+    That is, $x \in A$ and $x \notin B \cup C$. 
+    But then $x \notin B$ and $x \notin C$ so $x \in A - B$ and $x \in A - C$.
+    Thus, $x \in (A - B) \cap (A - C)$ so $A - (B \cup C) \subseteq (A - B) \cap (A - C)$.
+
+    For the other direction, let $x \in (A - B) \cap (A - C)$. 
+    Then $x \in A - B$ and $x \in A - C$ so $x \in A$, $x \notin B$, and $x \notin C$.
+    But then $x \notin B \cup C$ so $x \in A - (B \cup C)$.
+    Therefore, $(A - B) \cap (A - C) \subseteq A - (B \cup C)$, proving equality of sets.
+    The proof of the second statement is again analogous.
+\end{solution}
+
+% Exercise 1.2
+\begin{exercise}
+    Determine which of the following statements are true for all sets $A, B, C$, and $D$.
+    If a double implication fails, determine whether one or the other of the possible implications holds.
+    If an equality fails, determine whether the statement becomes true if the "equals" symbol is replaced by one or the other of the inclusion symbols $\subset$ or $\supset$.
+    \begin{enumerate}[label=(\alph*)]
+        \item $A \subset B$ and $A \subset C \Leftrightarrow A \subset (B \cup C)$.
+        \item $A \subset B$ or $A \subset C \Leftrightarrow A \subset (B \cup C)$.
+        \item $A \subset B$ and $A \subset C \Leftrightarrow A \subset (B \cap C)$.
+        \item $A \subset B$ or $A \subset C \Leftrightarrow A \subset (B \cap C)$.
+        \item $A - (A - B) = B$.
+        \item $A - (B - A) = A - B$.
+        \item $A \cap (B - C) = (A \cap B) - (A \cap C)$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+    The forward direction of (a) is true but the reverse direction is false.
+    To see this, let $a \in A$.
+    Then $a \in B$ and $a \in C$ so $a \in B \cup C$.
+    Therefore, $A \subset (B \cup C)$.
+    However, consider $A \subset B$ and $A \not\subset C$.
+    Certainly $A \subset B \cup C$ but the left side does not hold.
+
+    The forward direction of (b) is true but the reverse direction is false.
+    To prove the forward direction, let $a \in A$.
+    If $A \subset B$, then $a \in B$ so $a \in B \cup C$.
+    If $A \subset C$, then $a \in B$ and still we have $a \in B \cup C$.
+    In either case, $A \subset (B \cup C)$.
+    For a counterexample to the reverse direction, consider $A = \{1, 2\}$, $B = \{1\}$, $C = \{2, 3\}$.
+    Clearly $A \subset B \cup C$ but $A \not\subset B$ and $A \not\subset C$.
+
+    Both directions of (c) are true.
+    Indeed, suppose $A \subset B$ and $A \subset C$ and let $a \in A$.
+    Then $a \in B$ and $a \in C$ so $a \in B \cap C$, showing that $A \subset (B \cap C)$.
+    Now suppose $A \subset (B \cap C)$ and let $a \in A$.
+    Then $a \in B \cap C$ so $a \in B$ and $a \in C$. 
+    This implies that $A \subset B$ and $A \subset C$.
+
+    The forward direction of (d) is false but the reverse direction is true.
+    To prove the reverse direction, suppose $A \subset (B \cap C)$ and let $a \in A$.
+    Then $a \in B \cap C$ so $a \in B$ and $a \in C$, satisfying the left side of the statement.
+    For a counterexample to the forward direction, consider $A = \{0, 1\}$, $B = \{0, 1, 2\}$, and $C = \{2\}$. 
+    Then $A \subset B$ so the left side is satisfied by $B \cap C = \{2\}$ which $A$ is not a subset of.
+
+    Statement (e) holds if the equality is replaced with $\subset$.
+    To see this, let $x \in A - (A - B)$. 
+    Then $x \in A$ but $x \notin A - B$. 
+    That is, $x \in B$ so $A - (A - B) \subset B$.
+    For a counterexample to the other direction, consider the sets $A = \{0, 1\}$ and $B = \{1, 2\}$.
+    Then $A - (A - B) = \{1\} \neq B$, showing equality does not hold.
+
+    Statement (f) holds if equality is replaced with $\supset$.
+    Let $x \in A - B$. 
+    Then $x \in A$ and $x \notin B$. 
+    But if $x \notin B$ then $x \notin B - A$.
+    Thus, $x \in A - (B - A)$ so $A - (B - A) \supset A - B$.
+    For a counterexample to the other direction, consider $A = \{0, 1\}$ and $B = \{1, 2\}$. 
+    Then $A - (B - A) = \{0, 1\}$ while $A - B = \{0\}$, showing equality does not hold.
+
+    The equality in statement (g) holds.
+    To prove this, let $x \in A \cap (B - C)$.
+    Then $x \in A$ and $x \in B$, but $x \notin C$.
+    That is, $x \in A \cap B$ and $x \notin A \cap C$.
+    Thus, $x \in (A \cap B) - (A \cap C)$, showing that $\subset$ holds.
+    Now let $x \in (A \cap B) - (A \cap C)$.
+    This implies that $x \in A \cap B)$ but $x \notin A \cap C$.
+    The first part shows that $x \in A$ and $x \in B$, so the second statement implies $x \notin C$.
+    But then $x \in B - C$ so $x \in A \cap (B - C)$ and $\supset$ holds.
+    Since both sides are subsets of each other, equality holds.
+\end{solution}
+\end{document}

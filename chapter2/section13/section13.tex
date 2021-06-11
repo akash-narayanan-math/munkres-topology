@@ -1,0 +1,31 @@
+\documentclass[../../master.tex]{subfiles}
+
+\begin{document}
+\section{Basis for a Topology}
+
+% Exercise 13.1
+\begin{exercise}
+    Let $X$ be a topological space; let $A$ be a subset of $X$.
+    Suppose that for each $x \in A$ there is an open set $U$ containing $x$ such that $U \subset A$.
+    Show that $A$ is open in $X$.
+\end{exercise}
+
+\begin{solution}
+    Consider the set $B = \bigcup U$.
+    Since $B$ is the union of open sets, it is open.
+    We claim that $A = B$. 
+    Indeed, let $a \in A$.
+    Then $a \in U$ for some open set $U$.
+    But then $a \in \bigcup U = B$ so $A \subseteq B$.
+    Now let $b \in B$. 
+    That is, $b \in U$ for some $U \subset A$.
+    Then $b \in A$ so $B \subseteq A$, proving that $A = B$. 
+    Therefore, $A$ is open.
+\end{solution}
+
+% Exercise 13.2
+\begin{exercise}
+    Consider the nine topologies on the set $X = \{a, b, c\}$ indicated in Example 1 of \S 12.
+    Compare them; that is, for each pair of topologies, determine whether they are comparable, and if so, which is the finer.
+\end{exercise}
+\end{document}

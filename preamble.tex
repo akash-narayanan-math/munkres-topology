@@ -1,0 +1,29 @@
+% This file contains commonly used environments and commands to remove clutter
+
+% Common packages
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, enumitem}
+\usepackage[margin=0.5in]{geometry}
+
+% Section numbering
+\counterwithout{section}{chapter}
+
+% Environments
+\theoremstyle{definition}
+\newtheorem{exercise-internal}{Exercise}[section]
+\newenvironment{exercise}{
+    \medskip
+    \begin{exercise-internal}
+    }{
+\end{exercise-internal}
+}
+
+% Solution environment
+\newenvironment{solution}{
+    \begin{proof}[Solution]
+        \vspace{-2px}
+        \setlength{\parskip}{4px}
+        \setlength{\parindent}{0px}
+    }{
+\end{proof}
+}
