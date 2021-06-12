@@ -49,6 +49,16 @@
         \item $A - (A - B) = B$.
         \item $A - (B - A) = A - B$.
         \item $A \cap (B - C) = (A \cap B) - (A \cap C)$.
+        \item $A \cup (B - C) = (A \cup B) - (A \cup C)$.
+        \item $(A \cap B) \cup (A - B) = A$.
+        \item $A \subset C$ and $B \subset D \Rightarrow (A \times B) \subset (C \times D)$.
+        \item The converse of (j).
+        \item The converse of (j), assuming that $A$ and $B$ are nonempty.
+        \item $(A \times B) \cup (C \times D) = (A \cup C) \times (B \cup D)$.
+        \item $(A \times B) \cap (C \times D) = (A \cap C) \times (B \cap D)$.
+        \item $A \times (B - C) = (A \times B) - (A \times C)$.
+        \item $(A - B) \times (C - D) = (A \times C - B \times C) - (A \times D)$.
+        \item $(A \times B) - (C \times D) = (A - C) \times (B - D)$.
     \end{enumerate}
 \end{exercise}
 
@@ -106,5 +116,82 @@
     The first part shows that $x \in A$ and $x \in B$, so the second statement implies $x \notin C$.
     But then $x \in B - C$ so $x \in A \cap (B - C)$ and $\supset$ holds.
     Since both sides are subsets of each other, equality holds.
+
+    Statement (h) holds if equality is replaced with $\supset$. 
+    Indeed, let $x \in (A \cup B) - (A \cup C)$.
+    Then $x \in A \cup B$ and $x \notin A \cup C$.
+    This implies that $x \notin A$, $x \in B$, and $x \notin C$.
+    But then $x \in B - C$, so $x \in A \cup (B - C)$, proving $\supset$ holds.
+    For a counterexample to the other inclusion, consider $A = \{0\}, B = \{1, 2\}, C = \{2\}$.
+    Then $A \cup (B - C) = \{0, 1\}$ while $(A \cup B) - (A \cup C) = \{1\}$.
+
+    The equality in statement (i) holds. 
+    First suppose $x \in (A \cap B) \cup (A - B)$.
+    If $x \in A \cap B$ then $x \in A$ so  $\subset$ holds.
+    If $x \in A - B$ then $x \in A$ so $\subset$ holds.
+    Now suppose $x \in A$.
+    If $x \in B$ then $x \in A \cap B$ so $\supset$ holds.
+    If $x \notin B$ then $x \in A - B$ so $\supset$ holds.
+    Thus, the two sets are equal.
+
+    Statement (j) always holds.
+    Indeed, suppose the left side is true and let $(a, b) \in A \times B$.
+    Since $a \in A \subset C$, we have $a \in C$. 
+    Similarly, $b \in D$.
+    Thus, $(a, b) \in C \times D$ so $(A \times B) \subset (C \times D)$.
+
+    Statement (k) does not always hold.
+    The converse of (j) is that $(A \times B) \subset (C \times D) \Rightarrow A \subset C$ and $B \subset D$.
+    For a counterexample, consider $A = \{0\}$, $B = \emptyset$, $C = \{1\}$, $D = \{2\}$.
+    Then $A \times B = \emptyset \subset C \times D$ but clearly  $A \not\subset C$.
+
+    Statement (l) always holds. 
+    Let $a \in A$. Since $B$ is nonempty, choose some $b \in B$. 
+    Then $(a, b) \in A \times B$ so $(a, b) \in C \times D$.
+    But then $a \in C$ and $b \in D$.
+    That is, $A \subset C$ and $B \subset D$.
+
+    Statement (m) holds if equality is replaced with $\subset$.
+    Let $(x, y) \in (A \times B) \cup (C \times D)$.
+    If $(x, y) \in A \times B$ then $x \in A$ and $y \in B$.
+    But then $x \in A \cup C$ and $y \in B \cup D$ so $(x, y) \in (A \cup C) \times (B \cup D)$ showing $\subset$ holds.
+    The same reasoning applies if $(x, y) \in C \times D$.
+    To show the reverse inclusion does not always holds, consider $A = \{0\}$, $B = \{1\}$, $C = \{2\}$, $D = \{3\}$.
+    Then $(A \times B) \cup (C \times D) = \{(0, 1), (2, 3)\}$ while $(A \cup C) \times (B \cup D) = \{(0, 1), (0, 3), (2, 1), (2, 3)\}$.
+
+    Statement (n) always holds.
+    Suppose $(x, y) \in (A \times B) \cap (C \times D)$.
+    Then $x \in A$ and $x \in C$ so $x \in A \cap C$.
+    Similarly,  $y \in B \cap D$.
+    But then $(x, y) \in (A \cap C) \times (B \cap D)$, showing $\subset$ holds.
+    Now let $(x, y) \in (A \cap C) \times (B \cap D)$.
+    Then $x \in A \cap C$ and $y \in B \cap D$.
+    This implies that $(x, y) \in A \times B$ and $(x, y) \in C \times D$.
+    Thus, it is in their intersection and $\supset$ holds, implying equality.
+
+    Statement (o) always holds.
+    Suppose $(x, y) \in A \times (B - C)$. 
+    Then $x \in A$, $y \in B$, and $y \notin C$.
+    But then $(x, y) \in A \times B$ and $(x, y) \notin A \times C$ so it is in their difference and $\subset$ holds.
+    If $(x, y) \in (A \times B) - (A \times C)$ then $x \in A$, $y \in B$, and $y \notin C$.
+    Then $y \in B - C$ so $(x, y) \in A \times (B - C)$.
+
+    Statement (p) always holds.
+    Suppose $(x, y) \in (A - B) \times (C - D)$.
+    Then $x \in A$, $x \notin B$, $y \in C$, and $y \notin D$.
+    This implies that $(x, y) \in A \times C - B \times C$ and $(x, y) \notin A \times D$.
+    But then $(x, y) \in (A \times C - B \times C) - A \times D$ so $\subset$ holds.
+    Now suppose $(x, y) \in (A \times C - B \times C) - A \times D$.
+    Then $(x, y) \in A \times C - B \times C$ and $(x, y) \notin A \times D$.
+    The first part implies that $x \in A$ and $y \in C$. 
+    We can deduce that $x \notin B$ and $\notin D$.
+    Therefore $x \in A - B$ and $ \in C - D$ so $(x, y) \in (A - B) \times (C - D)$ and $\supset$ holds, making equality true.
+
+    Statement (q) holds if equality is replaced with $\supset$.
+    To see this, let $(x, y) \in (A - C) \times (B - D)$.
+    Then $x \in A$, $x \notin C$, $y \in B$, and $y \notin D$.
+    But then $(x, y) \in A \times B$ and $(x, y) \notin C \times D$ so it is in their difference and $\supset$ holds.
+    To see that the reverse inclusion does not always holds, consider $A = \{0, 1\}$, $B = \{1\}$, $C = \{1, 2\}$, $D = \{3\}$.
+    Then $(A \times B) - (C \times D) = \{(0, 1), (1, 1)\}$ while $(A - C) \times (B - D) = \{(0, 1)\}$.
 \end{solution}
 \end{document}
